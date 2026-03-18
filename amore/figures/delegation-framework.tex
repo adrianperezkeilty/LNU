@@ -1,0 +1,26 @@
+\begin{figure}[htb]
+\centering
+\begin{tikzpicture}[
+    box/.style={rectangle, draw, minimum width=2.5cm, minimum height=1.2cm, align=center, font=\sffamily},
+    arrow/.style={-{Latex[length=3mm,width=3mm]}, thick},
+    stepnum/.style={circle, draw, fill=white, minimum size=0.5cm, font=\bfseries\small}
+]
+    % client and Server boxes
+    \node[box] (client) at (0,0) {\textbf{client}\\\small(resource-\\constrained)};
+    \node[box] (server) at (8,0) {\textbf{Server}\\\small(powerful)};
+    
+    % Arrows and labels with step numbers
+    \draw[arrow] (client.north) -- ++(0,1.5) -| node[below, pos=0.25, align=center] {$A \in \Group_1$, $B \in \Group_2$\\$+$ auxiliary elements} (server.north);
+    \node[stepnum] at (4,2.8) {1};
+    
+    \draw[arrow] (server.south) -- ++(0,-1.5) -| node[below, pos=0.25, align=center] {$\rho = e(A,B) \in \Group_T$\\$\pi \subset \Group_T$ (proof)} (client.south);
+    \node[stepnum] at (4,-1.6) {2};
+    
+    % Verification box with step number
+    \node[draw, dashed, rounded corners, minimum width=2.5cm, minimum height=0.8cm, right=1.5cm of client, align=center, font=\small] (verify) {Verify $(\rho,\pi)$};
+    \draw[->, dashed] (client.east) -- (verify.west);
+    \node[stepnum] at (2,0.45) {3};
+\end{tikzpicture}
+\caption{Flow diagram for \textbf{one-shot} pairing delegation.}
+\label{fig:delegation-framework}
+\end{figure}

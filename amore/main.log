@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.7)  18 MAR 2026 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.7)  18 MAR 2026 16:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -790,6 +790,18 @@ File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen350
+\pgfarrowlength=\dimen351
+\pgfarrowwidth=\dimen352
+\pgfarrowlinewidth=\dimen353
+) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (./macros.tex)
 LaTeX Font Info:    Trying to load font information for OT1+pbk on input line 46.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pbk.fd
@@ -856,13 +868,13 @@ LaTeX Font Info:    ... okay on input line 46.
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count379
-\scratchdimen=\dimen350
+\scratchdimen=\dimen354
 \scratchbox=\box99
 \nofMPsegments=\count380
 \nofMParguments=\count381
 \everyMPshowfont=\toks60
 \MPscratchCnt=\count382
-\MPscratchDim=\dimen351
+\MPscratchDim=\dimen355
 \MPnumerator=\count383
 \makeMPintoPDFobject=\count384
 \everyMPtoPDFconversion=\toks61
@@ -995,6 +1007,40 @@ LaTeX Font Info:    Font shape `OT1/pbk/m/it' in size <6> not available
 (Font)              Font shape `OT1/pbk/l/it' tried instead on input line 24.
 ) [15
 
+] (./figures/delegation-framework.tex
+LaTeX Font Info:    Trying to load font information for OT1+pag on input line 9.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pag.fd
+File: ot1pag.fd 2001/06/04 font definitions for OT1/pag.
+)
+LaTeX Font Info:    Font shape `OT1/pag/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/pag/db/n' tried instead on input line 9.
+LaTeX Font Info:    Font shape `OT1/pbk/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/pbk/l/it' tried instead on input line 13.
+LaTeX Font Info:    Font shape `OT1/pbk/m/it' in size <8> not available
+(Font)              Font shape `OT1/pbk/l/it' tried instead on input line 13.
+LaTeX Font Info:    Font shape `OT1/pbk/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 14.
+) [16
+
+] (./figures/amore-flow.tex
+LaTeX Font Info:    Font shape `OT1/pag/b/n' in size <10> not available
+(Font)              Font shape `OT1/pag/db/n' tried instead on input line 14.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 14.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/pbk/m/n' in size <9> not available
+(Font)              Font shape `OT1/pbk/l/n' tried instead on input line 29.
+LaTeX Font Info:    Font shape `OT1/pbk/m/it' in size <9> not available
+(Font)              Font shape `OT1/pbk/l/it' tried instead on input line 29.
+LaTeX Font Info:    Font shape `OT1/pbk/m/n' in size <12> not available
+(Font)              Font shape `OT1/pbk/l/n' tried instead on input line 60.
+LaTeX Font Info:    Font shape `OT1/pbk/b/n' in size <12> not available
+(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 60.
+) [17
+
+] [18
+
 ]
 \tf@nav=\write6
 \openout6 = `main.nav'.
@@ -1014,18 +1060,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 43503 strings out of 474272
- 1075823 string characters out of 5747519
+ 44743 strings out of 474272
+ 1104744 string characters out of 5747519
  1950530 words of memory out of 5000000
- 64913 multiletter control sequences out of 15000+600000
- 573606 words of font info for 75 fonts, out of 8000000 for 9000
+ 66096 multiletter control sequences out of 15000+600000
+ 595199 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,123p,774b,2072s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkl8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkli8a.pfb>
-Output written on main.pdf (15 pages, 129830 bytes).
+ 128i,15n,123p,808b,2074s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagd8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkl8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkli8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on main.pdf (18 pages, 207956 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 132 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
+ 259 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

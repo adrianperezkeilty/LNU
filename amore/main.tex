@@ -23,7 +23,7 @@
 \usepackage{amsmath,amsfonts,amssymb,mathtools,derivative,systeme,hyperref,relsize,graphicx,ulem}
 \usepackage{xspace}
 \usepackage{pgfplots}
-\usetikzlibrary{patterns,positioning}
+\usetikzlibrary{patterns,positioning,arrows.meta,shapes.geometric,calc}
 \pgfplotsset{compat=1.18}
 % \usefonttheme[onlymath]{serif}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
@@ -116,4 +116,42 @@ K = e(P, P)^{abc} =e([b]&P,[c]P)^a=e([a]P, [c]P)^b=e([a]P, [b]P)^c
     \frametitle{Computational Costs}
     \input{figures/costs-histogram.tex}
 \end{frame}
+
+\begin{frame}
+    \frametitle{Pairing Delegation}
+    \input{figures/delegation-framework.tex}
+\end{frame}
+
+\begin{frame}
+    \input{figures/amore-flow.tex}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Pairing Delegation}
+\small
+    \begin{itemize}
+    
+	\item \textbf{Correctness}: If the \server behaves honestly, the output of the verification phase is the intended (vector of) pairing(s).	
+\[	 
+\myprob{\myresult=e(\AA,\BB)}{	(\pubvalue, \secvalue)\gets\onsetup(\state, {\AA},{\BB})\\
+		 		\serveroutput\gets\compute(\pubvalue)\\
+		 		\myresult\gets\onverify(\state,\secvalue,\serveroutput)}=1\,.
+\]
+	\item \textbf{Verifiability}: The \client must be able to detect with high probability when the \server returns an incorrect result.
+\[	 
+\myprob{\forge{\serveroutput}\gets\adversary\paren{\pubvalue}}{
+		 		\forge{\serveroutput}\neq\serveroutput\\
+		 		\onverify(\state,\secvalue,\serveroutput)\neq\bot}\leq\negl(\secpar)\,.
+\]
+	\item \textbf{Amortized Efficiency}: The \client's workload when delegating \totpairings pairings must be lower than computing them locally.
+    \[
+    \scalebox{0.9}{$\displaystyle
+        \frac{\cost(\offsetup)+\totpairings\cdot\paren{\cost(\onsetup) + \cost(\onverify)}}{\totpairings}
+        \leq \cost(e(A,B))$
+    }
+    \]
+	% \item \textbf{Input privacy}: For applications handling sensitive data, the \server should learn no information about the \client's pairing inputs beyond what is revealed by the protocol's output.
+    \end{itemize}
+\end{frame}
+
 \end{document}
