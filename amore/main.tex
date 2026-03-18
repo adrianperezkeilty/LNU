@@ -10,7 +10,7 @@
 % \usetheme{default}
 \usepackage{bookman}
 \usetheme{Madrid}
-\usefonttheme[⟨options⟩]{serif}
+\usefonttheme{serif}
 \usecolortheme{beaver}
 \setbeamertemplate{theorems}[numbered] 
 \setbeamertemplate{navigation symbols}{}
@@ -21,6 +21,10 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{amsmath,amsfonts,amssymb,mathtools,derivative,systeme,hyperref,relsize,graphicx,ulem}
+\usepackage{xspace}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns,positioning}
+\pgfplotsset{compat=1.18}
 % \usefonttheme[onlymath]{serif}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 \newcommand{\tendsto}[1]{%
@@ -34,7 +38,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title{Amortized Efficiency for Pairing Delegation}
+\title[Amortized Pairing Delegation]{Amortized Efficiency for Pairing Delegation}
 
 % \author{Adrian Perez Keilty} % Your name
 \institute[Chalmers] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -110,5 +114,6 @@ K = e(P, P)^{abc} =e([b]&P,[c]P)^a=e([a]P, [c]P)^b=e([a]P, [b]P)^c
 
 \begin{frame}
     \frametitle{Computational Costs}
+    \input{figures/costs-histogram.tex}
 \end{frame}
 \end{document}

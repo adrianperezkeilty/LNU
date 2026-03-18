@@ -1,0 +1,111 @@
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}
+    % BLS12-381
+    \begin{axis}[
+        name=plot1,
+        width=0.35\textwidth,
+        height=6cm,
+        ylabel={Cycles ($10^3$)},
+        title={BLS12-381},
+        title style={font=\small, yshift=0.3cm},
+        xtick=\empty,
+        ylabel style={font=\small},
+        yticklabel style={font=\tiny},
+        enlarge x limits=0.25,
+        ymin=0, ymax=3500,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=12pt] coordinates {(1,373)};
+    \addplot[ybar,pattern=vertical lines,pattern color=green!60,bar width=12pt] coordinates {(2,718)};
+    \addplot[ybar,pattern=grid,pattern color=orange!60,bar width=12pt] coordinates {(3,1074)};
+    \addplot[ybar,pattern=north east lines,pattern color=red!70,bar width=12pt] coordinates {(4,3194)};
+    \end{axis}
+    
+    % % BLS12-383
+    % \begin{axis}[
+    %     name=plot2,
+    %     at={(plot1.east)},
+    %     anchor=west,
+    %     xshift=0.8cm,
+    %     width=0.35\textwidth,
+    %     height=6cm,
+    %     title={BLS12-383},
+    %     title style={font=\small, yshift=0.3cm},
+    %     xtick=\empty,
+    %     yticklabel style={font=\tiny},
+    %     enlarge x limits=0.25,
+    %     ymin=0, ymax=3500,
+    %     ymajorgrids=true,
+    %     grid style=dashed,
+    % ]
+    % \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=12pt] coordinates {(1,428)};
+    % \addplot[ybar,pattern=vertical lines,pattern color=green!60,bar width=12pt] coordinates {(2,748)};
+    % \addplot[ybar,pattern=grid,pattern color=orange!60,bar width=12pt] coordinates {(3,1160)};
+    % \addplot[ybar,pattern=north east lines,pattern color=red!70,bar width=12pt] coordinates {(4,3216)};
+    % \end{axis}
+    
+    % BLS24-509
+    \begin{axis}[
+        name=plot2,
+        at={(plot1.east)},
+        anchor=west,
+        xshift=0.8cm,
+        width=0.35\textwidth,
+        height=6cm,
+        title={BLS24-509},
+        title style={font=\small, yshift=0.3cm},
+        xtick=\empty,
+        yticklabel style={font=\tiny},
+        enlarge x limits=0.25,
+        ymin=0, ymax=16000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=12pt] coordinates {(1,1008)};
+    \addplot[ybar,pattern=vertical lines,pattern color=green!60,bar width=12pt] coordinates {(2,4187)};
+    \addplot[ybar,pattern=grid,pattern color=orange!60,bar width=12pt] coordinates {(3,6478)};
+    \addplot[ybar,pattern=north east lines,pattern color=red!70,bar width=12pt] coordinates {(4,15068)};
+    \end{axis}
+    
+    % BLS48-575
+    \begin{axis}[
+        name=plot3,
+        at={(plot2.east)},
+        anchor=west,
+        xshift=0.8cm,
+        width=0.35\textwidth,
+        height=6cm,
+        title={BLS48-575},
+        title style={font=\small, yshift=0.3cm},
+        xtick=\empty,
+        yticklabel style={font=\tiny},
+        enlarge x limits=0.25,
+        ymin=0, ymax=72000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=12pt] coordinates {(1,1468)};
+    \addplot[ybar,pattern=vertical lines,pattern color=green!60,bar width=12pt] coordinates {(2,18052)};
+    \addplot[ybar,pattern=grid,pattern color=orange!60,bar width=12pt] coordinates {(3,30547)};
+    \addplot[ybar,pattern=north east lines,pattern color=red!70,bar width=12pt] coordinates {(4,68823)};
+    \end{axis}
+    
+    % Legend
+    \node[below=0.5cm of plot2.south, xshift=0cm] {
+        \begin{tikzpicture}
+            \node[rectangle, pattern=horizontal lines, pattern color=blue!60, draw, minimum width=0.3cm, minimum height=0.3cm] (box1) at (-2.5,0) {};
+            \node[anchor=north, yshift=0pt] at (box1.south) {\small $[a]P$, $P\in\Group_1$};
+            \node[rectangle, pattern=vertical lines, pattern color=green!60, draw, minimum width=0.3cm, minimum height=0.3cm] (box2) at (0.5,0) {};
+            \node[anchor=north, yshift=0pt] at (box2.south) {\small $[b]Q$, $Q\in\Group_2$};
+            \node[rectangle, pattern=grid, pattern color=orange!60, draw, minimum width=0.3cm, minimum height=0.3cm] (box3) at (3,0) {};
+            \node[anchor=north, yshift=0pt] at (box3.south) {\small $\gamma^c$, $\gamma\in\Group_T$};
+            \node[rectangle, pattern=north east lines, pattern color=red!70, draw, minimum width=0.3cm, minimum height=0.3cm] (box4) at (5.5,0) {};
+            \node[anchor=north, yshift=0pt] at (box4.south) {\small $e(A,B)$};
+        \end{tikzpicture}
+    };
+    
+\end{tikzpicture}
+\label{fig:pairing-cost-histogram}
+\end{figure}
