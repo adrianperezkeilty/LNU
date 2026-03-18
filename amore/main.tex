@@ -1,0 +1,114 @@
+\documentclass{beamer}
+
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+% \usetheme{default}
+\usepackage{bookman}
+\usetheme{Madrid}
+\usefonttheme[⟨options⟩]{serif}
+\usecolortheme{beaver}
+\setbeamertemplate{theorems}[numbered] 
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}[default][center]
+}
+
+\usepackage[many]{tcolorbox}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{amsmath,amsfonts,amssymb,mathtools,derivative,systeme,hyperref,relsize,graphicx,ulem}
+% \usefonttheme[onlymath]{serif}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\tendsto}[1]{%
+    \xrightarrow{\smash{\raisebox{-2ex}{$\scriptstyle#1$}}}}
+
+\input{macros.tex}
+
+%\usepackage {xcolor}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Amortized Efficiency for Pairing Delegation}
+
+% \author{Adrian Perez Keilty} % Your name
+\institute[Chalmers] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+    \frametitle{Pairings}
+    \small
+Let $(\Group_1,+),\,\,(\Group_2,+)$ and $(\Group_T,\cdot)$ be cyclic groups of prime order $q$.
+\pause
+A cryptographic pairing is a map 
+$$
+e\colon\Group_1\times\Group_2\mapsto\Group_T
+$$ 
+\pause
+that is 
+\begin{itemize}
+    \item Non degenerate:
+    If $\langle P\rangle=\Group_1$ and $\langle Q\rangle=\Group_2$ then $e\langle e(P, Q)\rangle = \Group_T$.
+    \pause
+    \item Bilinear:
+        $e([a]P, [b]Q) = e(P, Q)^{ab} = e([b]P, [a]Q)$.  
+    
+    \pause    
+    \item Computable in polynomial time. In practice, instantiated over pairing-friendly curves such as BLS12-381.
+\end{itemize}
+\pause
+Symmetric pairings ($\Group_1=\Group_2$) \emph{break} DDH on $\mathbb{G}_1$ and
+    $\mathbb{G}_2$: given $(g, g^a, g^b, g^c)$ one can test $c = ab$ via
+    $e(g^a, g^b) \stackrel{?}{=} e(g, g^c)$.
+\pause
+    \begin{itemize}
+  \item \textbf{New hardness assumption (DBDH)}: Given $(g_1, g_1^a, g_2, g_2^b, g_1^c, T)$ with
+    $g_i \in \mathbb{G}_i$, hard to decide whether $T = e(g_1,g_2)^{abc}$
+    or random.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Pairing-based Cryptography}
+    
+\pause
+    \small
+\textbf{Joux's tripartite Diffie-Hellman}:
+        Alice broadcasts $\bracket{a}P$, Bob broadcasts $\bracket{b}P$, and Charlie broadcasts $\bracket{c}P$. Each then computes the shared key
+\begin{align*}
+K = e(P, P)^{abc} =e([b]&P,[c]P)^a=e([a]P, [c]P)^b=e([a]P, [b]P)^c  
+\\
+&\uparrow\hspace{6em}\uparrow\hspace{6em}\uparrow
+\\
+&\text{Alice}\hspace{4.25em}\text{Bob}\hspace{4.5em}\text{Charlie}
+\end{align*}
+\pause
+\vspace{-1em}
+    \begin{itemize}
+  \item \textbf{Short Signatures (BLS)}: Signatures are single $\mathbb{G}_1$
+    elements; aggregation of $n$ signatures verified with a single pairing.
+\pause
+  \item \textbf{Identity-Based Encryption (IBE)}: User's identity string serves
+    as public key (Boneh-Franklin scheme).
+\pause
+  \item \textbf{KZG Polynomial Commitments}: Constant-size commitments and
+    opening proofs, foundational to modern zkSNARKs.
+\pause
+  \item \textbf{zkSNARKs (Groth16)}: Constant-size zkSNARK proofs (3 group elements) with verification reducible to 3 pairings.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Computational Costs}
+\end{frame}
+\end{document}

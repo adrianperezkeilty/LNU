@@ -1,0 +1,275 @@
+% \newcommand{\verifier}{\color{orange}}
+\newcommand{\setup}{\color{blue}}
+% \newcommand{\eval}{\color{red}}
+\newcommand{\verifierc}{orange}
+\newcommand{\setupc}{blue}
+\newcommand{\evalc}{red}
+\providecommand{\false}{\ensuremath{\mathsf{false}}}
+\providecommand{\true}{\ensuremath{\mathsf{true}}}
+\providecommand{\pcto}{\ensuremath{\mathsf{to}}}
+\providecommand{\pcpos}{\ensuremath{\mathsf{at}}}
+\providecommand{\pcrow}{\ensuremath{\mathsf{row}}}
+\providecommand{\pcrows}{\ensuremath{\mathsf{rows}}}
+\providecommand{\pcrowsize}{\ensuremath{\mathsf{getRowSize}}}
+\providecommand{\pccase}{\ensuremath{\mathbf{case}}\ }
+\providecommand{\pcswitch}{\ensuremath{\mathbf{switch}}\ }
+\providecommand{\breakalg}{\ensuremath{\mathsf{break}}}
+\providecommand{\pcof}{\ensuremath{\mathbf{of}}\xspace}
+\providecommand{\pcbreak}{\ensuremath{\mathbf{break}}\xspace}
+\providecommand{\myprotocol}{\ensuremath{{\bf \Pi}}\xspace}
+\providecommand{\toSV}{\ensuremath{{\tt to}\_{\tt SVSV}}\xspace}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\matrixA}{\ensuremath{\mathbf{A}}\xspace}
+\newcommand{\matrixB}{\ensuremath{\mathbf{B}}\xspace}
+\newcommand{\F}{\mathbb{F}}
+\providecommand{\Group}{\mathbb{G}}
+\newcommand{\N}{\mathbb {N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Server}{\ensuremath{\mathcal{S}}\xspace}
+\newcommand{\T}{\ensuremath{{\tt T}}}
+\newcommand{\Z}{\mathbb {Z}}
+\newcommand{\He}{\mathcal{H}}
+\newcommand{\id}{{\sf id}}
+
+\newcommand{\FF}{\ensuremath{\mathbb F}}
+\newcommand{\fp}{\ensuremath{\FF_p}}
+\newcommand{\fps}{\ensuremath{\FF_p^*} }
+\newcommand{\fpk}{\ensuremath{\FF_{p^k} } }
+\newcommand{\fpks}{\ensuremath{\FF_{p^k}^*}}
+\newcommand{\fq}{\ensuremath{\FF_q}}
+\newcommand{\fqk}{\ensuremath{\FF_{q^k}}}
+\newcommand{\fqks}{\ensuremath{\FF^*_{q^k}}}
+\newcommand{\fpt}{\ensuremath{\FF_{p^2}}}
+\newcommand{\fpts}{\ensuremath{\FF_{p^2}^*}}
+\providecommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+\newcommand{\xdownarrow}[1]{%
+  {\left\downarrow\vbox to #1{}\right.\kern-\nulldelimiterspace}
+}
+
+%%%%%%%%%%%%
+%% ALGORITHMS
+%%%%%%%%%%%%
+\providecommand{\enc}{\ensuremath{{\sf ENC}}\xspace}
+\providecommand{\dec}{\ensuremath{{\sf DEC}}\xspace}
+\providecommand{\amore}{\ensuremath{\text{KAPR25}}\xspace}
+\providecommand{\love}{\ensuremath{{\sf LOVE}}\xspace}
+\providecommand{\keygen}{\ensuremath{{\sf KeyGen}}\xspace}
+\providecommand{\probgen}{\ensuremath{{\sf ProbGen}}\xspace}
+\providecommand{\compute}{\ensuremath{{\sf Compute}}\xspace}
+\providecommand{\verify}{\ensuremath{{\sf Verify}}\xspace}
+\providecommand{\onverify}{\ensuremath{{\sf Verify}}\xspace}
+\providecommand{\onsetup}{\ensuremath{{\sf Setup}}\xspace}
+\providecommand{\offsetup}{\ensuremath{{\sf OneTimeSetup}}\xspace}
+\providecommand{\precompute}{\ensuremath{{\sf PreCompute}}\xspace}
+\providecommand{\preco}{\hyperref[fig:amore]{\ensuremath{{\sf PreComp}}}\xspace}
+\providecommand{\client}{\ensuremath{{\sf client}}\xspace}
+\providecommand{\server}{\ensuremath{{\sf server}}\xspace}
+\providecommand{\gsetup}{\ensuremath{{\sf GlobalSetup}}\xspace}
+\providecommand{\init}{\ensuremath{{\sf InitState}}\xspace}
+\providecommand{\bool}{} %\ensuremath{{\tt Bool}}\xspace}
+\providecommand{\tstart}{\ensuremath{{\tt t}_{\sf start}}\xspace}
+\providecommand{\tnow}{\ensuremath{{\tt time}.{\tt now()}}\xspace}
+\providecommand{\devicebound}{\ensuremath{{\mathcal{B}}}\xspace}
+%%%%%%%%%%%%
+%% INPUTS
+%%%%%%%%%%%%
+\providecommand{\secpar}{\ensuremath{{\lambda}}\xspace}
+\providecommand{\effpar}{\ensuremath{\varphi}\xspace}
+\providecommand{\auxsecpar}{\ensuremath{ {\tt aux.sec}}\xspace}
+\providecommand{\statsecpar}{\ensuremath{\sigma}\xspace}
+\providecommand{\timepar}{\ensuremath{\tau}\xspace}
+\providecommand{\roundpar}{\ensuremath{\kappa}\xspace}
+\providecommand{\sk}{\ensuremath{{\sf sk}}\xspace}
+\providecommand{\pk}{\ensuremath{{\sf pk}}\xspace}
+\providecommand{\myinput}{\ensuremath{(A,B)}\xspace} %input to the outsourced computation
+\providecommand{\serveroutput}{\ensuremath{{\tt out}}\xspace} %encoded output by the server
+\providecommand{\secvalue}{\ensuremath{{\tt sec}}\xspace} %secret output of the client
+\providecommand{\secarray}{\ensuremath{{\bf sec}}\xspace}
+\providecommand{\pubvalue}{\ensuremath{{\tt pub}}\xspace} %public output of the client
+\providecommand{\privvalue}{\ensuremath{{\tt priv}}\xspace} %private superscript in sec experiment
+\providecommand{\state}{\ensuremath{{\tt sk}}\xspace} %state
+\providecommand{\advstate}{\ensuremath{{\tt st}}\xspace} %state
+\providecommand{\offvalue}{\ensuremath{{\tt off}}\xspace} %public output of the client
+\providecommand{\gpp}{\ensuremath{{\tt pp}}\xspace} %public parameters
+\providecommand{\myresult}{{\ensuremath{\tt result}}\xspace} %encoded output by the server
+\providecommand{\myresults}{{\ensuremath{\sf values}}\xspace}
+\providecommand{\gp}{\ensuremath{{\sf gp}}\xspace}%globabl public parameters, crs
+\providecommand{\pick}{\ensuremath{\overset{\,\$}{\gets}}\xspace}
+\providecommand{\pickwithdist}{\ensuremath{\overset{\,\mydist}{\gets}}\xspace}
+\providecommand{\pickwithdistbatch}{\ensuremath{\overset{\,\vec{\mydist}}{\gets}}\xspace}
+\providecommand{\pickwithdistOne}{\ensuremath{\overset{\,\mydist_1}{\gets}}\xspace}
+\providecommand{\pickwithdistTwo}{\ensuremath{\overset{\,\mydist_2}{\gets}}\xspace}
+\providecommand{\pickwithdistOnebatch}{\ensuremath{\overset{\,\vec{\mydist}_1}{\gets}}\xspace}
+\providecommand{\pickwithdistTwobatch}{\ensuremath{\overset{\,\vec{\mydist}_2}{\gets}}\xspace}
+\providecommand{\MDist}{\ensuremath{\mathsf{MDist}}\xspace}
+\providecommand{\privtype}{\ensuremath{\mathsf{type}}\xspace}
+\providecommand{\svsv}{\ensuremath{\mathsf{SVSV}}\xspace}
+\providecommand{\svpv}{\ensuremath{\mathsf{SVPV}}\xspace}
+\providecommand{\pvsv}{\ensuremath{\mathsf{PVSV}}\xspace}
+\providecommand{\pvpv}{\ensuremath{\mathsf{PVPV}}\xspace}
+\providecommand{\pvpc}{\ensuremath{\mathsf{PVPC}}\xspace}
+\providecommand{\pvsc}{\ensuremath{\mathsf{PVSC}}\xspace}
+\providecommand{\svpc}{\ensuremath{\mathsf{SVPC}}\xspace}
+
+%%%%%%%%%%%%
+%% GROUP VARIABLES
+%%%%%%%%%%%%
+\providecommand{\genone}{\ensuremath{P}\xspace}
+\providecommand{\gentwo}{\ensuremath{Q}\xspace}
+\providecommand{\gentt}{\ensuremath{\gamma_T}\xspace}
+%\providecommand{\pprime}{\ensuremath{\ell}\xspace}
+\providecommand{\pprime}{\ensuremath{q}\xspace}
+\providecommand{\myr}{\ensuremath{r}\xspace}
+\providecommand{\myc}{\ensuremath{c}\xspace}
+\providecommand{\myinfty}{\ensuremath{\mathcal{O}}\xspace}
+
+
+
+%%%%%%%%%%%%
+%% FUNCTIONS & SECURITY
+%%%%%%%%%%%%
+
+\providecommand{\codom}{\ensuremath{{\sf codom}}}
+\providecommand{\fmult}{\ensuremath{{\mathfrak{f}_\mathfrak{m}}}}
+\providecommand{\finv}{\ensuremath{{\mathfrak{f}_\mathfrak{i}}}}
+\providecommand{\pairing}{\ensuremath{{\mathfrak p}}\xspace}
+\providecommand{\gmult}{\ensuremath{{\mathfrak m}}}
+% \providecommand{\grand}{\ensuremath{\overset{\$}{\mathfrak m}}}
+\providecommand{\grand}{\ensuremath{\mathfrak m^{\$}}}
+% \providecommand{\shortgmult}{\ensuremath{{\bar{\mathfrak m}}}}
+\providecommand{\shortgmult}{\ensuremath{\mathfrak m^{\sf sh}}}
+\providecommand{\groupop}{\ensuremath{{\mathfrak g}}}
+\providecommand{\cost}{\ensuremath{{\sf cost}}\xspace}
+\providecommand{\dom}{\ensuremath{{\sf dom}}\xspace}
+\providecommand{\poly}{\ensuremath{{\sf poly}}\xspace}
+\providecommand{\negl}{\ensuremath{{\sf negl}}\xspace}
+\providecommand{\prob}{\ensuremath{\mathcal{P}}\xspace}
+\providecommand{\myprob}[2]{\ensuremath{\mathrm{Pr}\left[{\begin{array}{c}#1\end{array}} \left|
+    \begin{array}{c} #2 \end{array}\right. \right]}\xspace}
+\newcommand{\lto}{\ensuremath{\leftarrow}}
+\newcommand{\rto}{\ensuremath{\rightarrow}}
+\providecommand{\nqueries}{\ensuremath{q}\xspace}
+\providecommand{\forge}[1]{\ensuremath{{#1}^*}\xspace}
+\providecommand{\hybrid}[1]{\ensuremath{\mathcal{H}_{#1}}\xspace}
+\providecommand{\win}[1]{\ensuremath{\mathsf{W}_{#1}}\xspace}
+\providecommand{\adversary}{\ensuremath{\mathcal{A}}\xspace}
+\providecommand{\advantage}{\ensuremath{\mathsf{Adv}}\xspace}
+\providecommand{\pclist}{\ensuremath{{\sf list}}\xspace}
+\providecommand{\pcinput}{\ensuremath{{\sf input}}\xspace}
+\providecommand{\delegations}{\ensuremath{\mathsf{N}}\xspace}
+\providecommand{\totpairings}{\ensuremath{L}\xspace}
+
+\providecommand{\onewayexp}{\ensuremath{\textnormal{{\bf Exp}}_{f, \mathcal{A}}^{\sf OW}}\xspace}
+\providecommand{\verifexpCI}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf CI-ver}}\xspace}
+\providecommand{\verifexpSI}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf ver}}\xspace}
+\providecommand{\privexpIND}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf IND-priv}}\xspace}
+\providecommand{\privexpOW}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf OW-priv}}\xspace}
+\providecommand{\singleexperiment}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf single}}\xspace}
+\providecommand{\seqexperimentCI}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf seq, CI-ver}}\xspace}
+\providecommand{\seqexperimentSI}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf seq, ver}}\xspace}
+\providecommand{\seqPrivExperiment}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf seq, IND-priv}}\xspace}
+\providecommand{\seqPrivExperimentWeak}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf seq, OW-priv}}\xspace}
+\providecommand{\batchexperiment}{\ensuremath{\textnormal{{\bf Exp}}_{\myprotocol, \mathcal{A}}^{\sf batch}}\xspace}
+\providecommand{\amorexperiment}{\ensuremath{\textnormal{{\bf Exp}}_{\amore, \mathcal{A}}^{\sf seq}}\xspace}
+
+%%%%%%%%%%%%
+%% ENTITIES
+%%%%%%%%%%%%
+\providecommand{\client}{{\tt Client}\xspace}
+\providecommand{\server}{{\tt Server}\xspace}
+\providecommand{\tuple}{\ensuremath{\pubvalue}\xspace}
+
+\providecommand{\pcnot}{\ensuremath{\mathbf{not}~}}
+\providecommand{\pcand}{\ensuremath{\mathbf{and}~}}
+\providecommand{\pcor}{\ensuremath{\mathbf{or}~}}
+\providecommand{\pcdo}{\ensuremath{\,\textbf{:}~}}
+\providecommand{\view}{\ensuremath{{\sf view}}\xspace}
+
+\providecommand{\pprocedure}[2]{
+	\noindent\vspace{.4em}\\
+	\procedure[linenumbering]{#1\baselineskip=5pt}{#2}
+}
+
+
+\providecommand{\frameprocedures}[1]{\fbox{\begin{minipage}{.9\linewidth}\scalebox{.9}{#1}\end{minipage}}}
+
+\providecommand{\mybullet}{\noindent\\\indent$\bullet$~}
+
+
+%%%%%%%%%%%%
+%% Figures
+%%%%%%%%%%%%
+
+\newcommand\customYshift{0ex}
+\newcommand\customScale{0.9}
+
+%%%%%%%%%%%%
+%% Size scaling
+%%%%%%%%%%%%
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+%%% in G1
+\ifdefined\AA
+    \renewcommand{\AA}{\ensuremath{A}\xspace}
+	\renewcommand{\aa}{\ensuremath{a}\xspace}
+
+\else
+    \providecommand{\AA}{\ensuremath{A}\xspace}
+	\providecommand{\aa}{\ensuremath{a}\xspace}
+\fi
+
+\providecommand{\CC}{\ensuremath{C}\xspace}
+\providecommand{\UU}{\ensuremath{U}\xspace}
+\providecommand{\WW}{\ensuremath{W}\xspace}
+\providecommand{\YY}{\ensuremath{Y}\xspace}
+\providecommand{\cc}{\ensuremath{c}\xspace}
+\providecommand{\uu}{\ensuremath{u}\xspace}
+\providecommand{\ww}{\ensuremath{w}\xspace}
+\providecommand{\yy}{\ensuremath{y}\xspace}
+
+%%% in G2
+\providecommand{\BB}{\ensuremath{B}\xspace}
+\providecommand{\DD}{\ensuremath{D}\xspace}
+\providecommand{\EE}{\ensuremath{E}\xspace}
+\providecommand{\VV}{\ensuremath{V}\xspace}
+\providecommand{\XX}{\ensuremath{X}\xspace}
+\providecommand{\ZZ}{\ensuremath{Z}\xspace}
+\providecommand{\bb}{\ensuremath{b}\xspace}
+\providecommand{\dd}{\ensuremath{d}\xspace}
+\providecommand{\vv}{\ensuremath{v}\xspace}
+\providecommand{\xx}{\ensuremath{x}\xspace}
+\providecommand{\zz}{\ensuremath{z}\xspace}
+
+\providecommand{\batchsize}{\ensuremath{\mathsf{M}}\xspace}
+
+%%% other
+\providecommand{\secexp}{\ensuremath{r}\xspace}
+\providecommand{\secexpTwo}{\ensuremath{t}\xspace}
+\providecommand{\secexpThree}{\ensuremath{\hat{t}}\xspace}
+\providecommand{\longtermsecret}{\ensuremath{s}\xspace}
+\providecommand{\makevector}[1]{\ensuremath{\overrightarrow{#1}}}
+\providecommand{\makematrix}[1]{\ensuremath{\overrightarrow{\mathbf{#1}}}}
+\providecommand{\range}[1]{\ensuremath{\left\llbracket #1 \right\rrbracket}}
+\providecommand{\size}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
+\providecommand{\len}{\ensuremath{{\tt len}}}
+\providecommand{\bigO}[1]{\ensuremath{\mathcal{O}(#1)}}
+\providecommand{\bigTheta}[1]{\ensuremath{\Theta(#1)}}
+\providecommand{\paren}[1]{\left(#1\right)}  % auto-sized parentheses
+\providecommand{\bracket}[1]{\left[#1\right]}  % auto-sized brackets
+\providecommand{\cbracket}[1]{\left\{#1\right\}}  % auto-sized brackets
+\providecommand{\bfone}{\ensuremath{{\bf 1}}\xspace}
+\providecommand{\unc}{\ensuremath{{\sf unc}}\xspace}
+\providecommand{\evr}{\ensuremath{{\sf evr}}\xspace}
+\providecommand{\ctr}{\ensuremath{{\sf ctr}}\xspace}
+\providecommand{\guesses}{\ensuremath{{\sf guesses}}\xspace}
+\providecommand{\mybit}{\ensuremath{b}\xspace}
+\providecommand{\mydist}{\ensuremath{\mathcal{D}}\xspace}
+\newcommand{\Distmarg}[1]{\mathsf{Dist}_\infty^\lambda(#1)\big|_{\mathsf{marg}}}
+\providecommand{\myset}{\ensuremath{\mathcal{X}}\xspace}
+\providecommand{\mysupp}{\ensuremath{\mathsf{supp}}\xspace}
+
+% Public verifiability macros
+\providecommand{\commit}{\ensuremath{\mathsf{commit}}\xspace}
