@@ -203,6 +203,7 @@ K = e(P, P)^{abc} =e([b]&P,[c]P)^a=e([a]P, [c]P)^b=e([a]P, [b]P)^c
     \end{equation}
     If $\paren{\adversary(\pubvalue)\to\forge{\serveroutput}\neq\serveroutput}\wedge\paren{\onverify(\forge{\serveroutput})\neq\bot}$ then \adversary outputs the secret \secexp.
 \end{lemma}
+\pause
 \begin{proof}
     By the closure property of $\Group_T$,
     if $\paren{\xi=\paren{\forge{\rho}}^{\secexp}\cdot\paren{\forge{\gamma}}}\wedge\paren{\forge{\rho}\in\Group_T}$, then $\forge{\serveroutput}$ can be written as a deviation from the honest output: $\forge{\rho}=\rho\cdot\eta$ and $\forge{\gamma}=\gamma\cdot\eta^{-\secexp}$ for any public element $\eta\in\Group_T\,$. Indeed,  
@@ -216,15 +217,18 @@ K = e(P, P)^{abc} =e([b]&P,[c]P)^a=e([a]P, [c]P)^b=e([a]P, [b]P)^c
     \frametitle{One way to design this}
     For \textbf{amortized efficiency}:
     \vspace{1em}
+    \pause
     \begin{itemize}
         \setlength{\itemsep}{7.5pt}
         \item Sequential delegation: Reuse $\xi$ by generating in the next delegations secrets $(\secexp_i,u_i,v_i)$ such that $u_i\cdot v_i=u_j\cdot v_j\,$. The public values will still be equipped with an extra degree of freedom.  
+        \pause
         \item Sample short scalars. Short $\Group_T$ exponentation is (a lot) cheaper than a full-range one.
         % \begin{align*}
         %     e(U_i,-V_i)=e(A_i,B_i)^{\secexp_i}\cdot e(A_i,V_i-[\secexp_i]B_i)\cdot e\left([v_i](U_i+A_i),\gentwo\right)
         % \end{align*}
     \end{itemize}
     \vspace{1em}
+    \pause
     Wait a minute... do we still get unconditional security?
 \end{frame}
 
@@ -238,19 +242,19 @@ Let $(\Group=\langle P\rangle,+)$ be a cyclic group of prime order $q$,
 % where $q$ is a $2\cdot\secpar$-bit integer, 
 and $(\secexp_1,\secexp_2,u)$ a tuple of secret values such that 
 $\secexp_1,\secexp_2\pick S\subset
-\Z_q^*\,$ and $u\pick\Z_q^*\,$. Let $U=[u]P\in\Group\,$, and consider the public view 
+\Z_q^*\,$ and $\varepsilon\pick\Z_q^*\,$. Let $\xi=[\varepsilon]P\in\Group\,$, and consider the public view 
 	\begin{equation}
 		\pubvalue=\begin{cases}
-			\CC=[\secexp_1]U+\XX
+			\CC=[\secexp_1]\xi+\XX
 			\\
-			\DD=[\secexp_2]U+\YY
+			\DD=[\secexp_2]\xi+\YY
 		\end{cases}\label{eq:toy-example-view}
 		\,,
 	\end{equation}
 	where $\XX,\YY\in\Group$ are public and  $\XX\neq\CC,\YY\neq\DD$.  
     \adversary can attempt to learn the secret tuple from (\ref{eq:toy-example-view}) by picking an element 
 	\begin{equation}
-		\forge{U}\in\mathcal{I}=\left\{[t_1^{-1}](\CC-\XX)\colon t_1\in S\right\}\cap
+		\forge{\xi}\in\mathcal{I}=\left\{[t_1^{-1}](\CC-\XX)\colon t_1\in S\right\}\cap
 		\left\{[t_2^{-1}](\DD-\YY)\colon t_2\in S\right\}
 		\label{eq:intersection}		
 	\end{equation}
@@ -271,19 +275,72 @@ $\secexp_1,\secexp_2\pick S\subset
 \begin{frame}
     \frametitle{What now?}
     \small
+    \pause
     If short scalars are not used, minimal efficiency is gained. If short scalars are used, no unconditional security can be proven... 
     \\
+    \pause
     \vspace{1em}
     \textbf{Remark}: Once the protocol execution is finished, \adversary can no longer cheat. We could aim for everlasting security instead.
     \\
+    \pause
     \vspace{1em}
     \textbf{(Unorthodox) Solution}: 
+    \pause
     \begin{itemize}
         \item Add a timeout parameter to the protocol.
+        \pause
         \item Bound \adversary computationally... but not in the conventional way: Assume \adversary is not more powerful than the entire Bitcoin network, i.e., \adversary is allowed to compute $2^\kappa$ scalar group multiplications per second ($\kappa$ matching the current hashrate conversion).
     \end{itemize}  
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Adversary winning probability}
+    \small
+    \pause
+    \textbf{Time-bound}: \adversary computes $\leq 2^\kappa$ short exponentations in $\timepar$ seconds.
+    \pause
+    \\
+    \textbf{Best strategy}: Choose $S_1,S_2\subset\range{2^\effpar}\colon\size{S_1}+\size{S_2}\leq 2^\kappa$ and intersect sets.
+    \pause
+    \begin{align*}
+        &\myprob{\forge{\serveroutput}\gets\adversary\paren{\pubvalue}}{
+                        \forge{\serveroutput}\neq\serveroutput\\
+                        \onverify(\state,\secvalue,\serveroutput)\neq\bot}
+        \\[10pt]
+        \pause
+        \leq&\myprobNoBar{\xi\in\begin{array}{c}
+            \mathrm{set}\ \{[r^{-1}](C-X):\ r\in S_1\}\\[2pt]
+            \cap\\[2pt]
+            \mathrm{set}\ \{[r^{-1}](D-Y):\ r\in S_2\}
+            \end{array}}
+            \\[10pt]
+            \pause
+        \leq&\myprobNoBar{\begin{array}{c}
+            \mathrm{event}\ \{r_1\in S_1\}\\[2pt]
+            \wedge\\[2pt]
+            \mathrm{event}\ \{r_2\in S_2\}
+            \end{array}}
+        \leq 2^{-\statsecpar}~~~\text{ if } \effpar=\lceil\frac{\statsecpar-1}{2}+\kappa\rceil
+    \end{align*}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Performance results}
+    \input{figures/performance.tex}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+    
+    Thank you for your attention :)
+        \\
+        \vspace{3em}
+    Paper: eprint.iacr.org/2025/542        
+    \end{center}
+
+\end{frame}
 % \begin{frame}
 % 	\begin{align*}
 % 		\rho^\secexp\cdot \gamma & = e(A,B)^\secexp\cdot \left(e(A,D)\cdot e(C,\gentwo)\right) 

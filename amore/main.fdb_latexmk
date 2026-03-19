@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1773881826 "/home/tyson/Chalmers/repos/LNU/amore/main.tex" "main.pdf" "main" 1773881829 0
-  "/home/tyson/Chalmers/repos/LNU/amore/main.tex" 1773881826 11657 4ba74857ed8ce20b04228d8897ab0a27 ""
+["pdflatex"] 1773884708 "/home/tyson/Chalmers/repos/LNU/amore/main.tex" "main.pdf" "main" 1773884713 0
+  "/home/tyson/Chalmers/repos/LNU/amore/main.tex" 1773884703 13247 8093316ca39645dd7c0cf7de551b5b70 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/avantgar/pagd7t.tfm" 1136768653 2492 c3c1cdcee2dde7695628464fd5bab43c ""
@@ -61,6 +61,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1248133631 32442 c975af247b6702f7ca0c299af3616b80 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb" 1302307949 27430 0e29b053ae98d5f87d872ee72a12d5f5 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagd8a.pfb" 1136849748 36354 f20bee7d266ac21e410927874882a384 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb" 1136849748 34871 37495c1e231421084d87820806d42cdc ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb" 1136849748 44768 f7f73d132286e7860b4a7010de7f597c ""
@@ -345,11 +346,12 @@
   "figures/delegation-framework.tex" 1773870578 1377 251fa05406922c3352de9dc8a456a924 ""
   "figures/double-DES.tex" 1773880271 2289 dc36509022686934a249e5bb493746f7 ""
   "figures/meet-in-the-middle.tex" 1773879816 2309 e04ce4b4d1c57f5da1c1c8c5f70e0df0 ""
-  "macros.tex" 1773827008 13159 3d194ddb254af06c3d49e6f88219a88b ""
-  "main.aux" 1773881829 3470 77fb1406d801cebde7b8cdf6671c783a "pdflatex"
-  "main.nav" 1773881829 1600 6e1504c1146cef26eb8a05589e521a63 "pdflatex"
-  "main.out" 1773881827 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1773881826 11657 4ba74857ed8ce20b04228d8897ab0a27 ""
+  "figures/performance.tex" 1773884364 6527 6bb54ff811c01158b74e4c2f7b135610 ""
+  "macros.tex" 1773883010 13358 cd950738fba331d2b5e0c0c4956f4c8a ""
+  "main.aux" 1773884713 3983 d363d1459bdea94ab293f3ea27c0f541 "pdflatex"
+  "main.nav" 1773884713 1879 7b61835803c268c48c13cabb1acef736 "pdflatex"
+  "main.out" 1773884710 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1773884703 13247 8093316ca39645dd7c0cf7de551b5b70 ""
   (generated)
   "main.aux"
   "main.log"

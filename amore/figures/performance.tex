@@ -1,0 +1,165 @@
+\begin{figure}[!htb]
+\centering
+\resizebox{0.7\textwidth}{!}{%
+\begin{tikzpicture}
+    % Row 1: M=3
+    % Label for M=3
+    \node[font=\small\bfseries, anchor=west] at (-2.5, 1) {$\batchsize=3$};
+    
+    % BLS12-381 (M=3)
+    \begin{axis}[
+        name=plot4,
+        width=0.32\textwidth,
+        height=4.75cm,
+        title={BLS12-381},
+        title style={font=\small, yshift=0.2cm},
+        ylabel style={font=\small},
+        yticklabel style={font=\tiny},
+        xtick=\empty,
+        enlarge x limits=0.25,
+        ymin=0, ymax=2000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=north west lines,pattern color=black!50,bar width=8pt] coordinates {(1,1470)};
+    \addplot[ybar,pattern=dots,pattern color=gray!60,bar width=8pt] coordinates {(2,1499)};
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=8pt] coordinates {(3,1324)};
+    \addplot[ybar,pattern=crosshatch,pattern color=orange!60,bar width=8pt] coordinates {(4,598)};
+    \end{axis}
+
+    % BLS24-509 (M=3)
+    \begin{axis}[
+        name=plot5,
+        at={(plot4.east)},
+        anchor=west,
+        xshift=0.75cm,
+        width=0.32\textwidth,
+        height=4.75cm,
+        title={BLS24-509},
+        title style={font=\small, yshift=0.2cm},
+        yticklabel style={font=\tiny},
+        xtick=\empty,
+        enlarge x limits=0.25,
+        ymin=0, ymax=11000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=north west lines,pattern color=black!50,bar width=8pt] coordinates {(1,7591)};
+    \addplot[ybar,pattern=dots,pattern color=gray!60,bar width=8pt] coordinates {(2,8959)};
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=8pt] coordinates {(3,7551)};
+    \addplot[ybar,pattern=crosshatch,pattern color=orange!60,bar width=8pt] coordinates {(4,3469)};
+    \end{axis}
+
+    % BLS48-575 (M=3)
+    \begin{axis}[
+        name=plot6,
+        at={(plot5.east)},
+        anchor=west,
+        xshift=0.75cm,
+        width=0.32\textwidth,
+        height=4.75cm,
+        title={BLS48-575},
+        title style={font=\small, yshift=0.2cm},
+        yticklabel style={font=\tiny},
+        xtick=\empty,
+        enlarge x limits=0.25,
+        ymin=0, ymax=45000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=north west lines,pattern color=black!50,bar width=8pt] coordinates {(1,36688)};
+    \addplot[ybar,pattern=dots,pattern color=gray!60,bar width=8pt] coordinates {(2,36696)};
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=8pt] coordinates {(3,31339)};
+    \addplot[ybar,pattern=crosshatch,pattern color=orange!60,bar width=8pt] coordinates {(4,13016)};
+    \end{axis}
+
+    % Row 2: M=10
+    % Label for M=10
+    \node[font=\small\bfseries, anchor=west] at (-2.5, -2) {$\batchsize=10$};
+    
+    % BLS12-381 (M=10)
+    \begin{axis}[
+        name=plot7,
+        at={(plot4.south)},
+        anchor=north,
+        yshift=-1cm,
+        width=0.32\textwidth,
+        height=4.75cm,
+        ylabel style={font=\small},
+        yticklabel style={font=\tiny},
+        xtick=\empty,
+        enlarge x limits=0.25,
+        ymin=0, ymax=2000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=north west lines,pattern color=black!50,bar width=8pt] coordinates {(1,1470)};
+    \addplot[ybar,pattern=dots,pattern color=gray!60,bar width=8pt] coordinates {(2,1113)};
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=8pt] coordinates {(3,922)};
+    \addplot[ybar,pattern=crosshatch,pattern color=orange!60,bar width=8pt] coordinates {(4,427)};
+    \end{axis}
+
+    % BLS24-509 (M=10)
+    \begin{axis}[
+        name=plot8,
+        at={(plot7.east)},
+        anchor=west,
+        xshift=0.75cm,
+        width=0.32\textwidth,
+        height=4.75cm,
+        yticklabel style={font=\tiny},
+        xtick=\empty,
+        enlarge x limits=0.25,
+        ymin=0, ymax=10000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=north west lines,pattern color=black!50,bar width=8pt] coordinates {(1,7591)};
+    \addplot[ybar,pattern=dots,pattern color=gray!60,bar width=8pt] coordinates {(2,6724)};
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=8pt] coordinates {(3,5274)};
+    \addplot[ybar,pattern=crosshatch,pattern color=orange!60,bar width=8pt] coordinates {(4,2308)};
+    \end{axis}
+
+    % BLS48-575 (M=10)
+    \begin{axis}[
+        name=plot9,
+        at={(plot8.east)},
+        anchor=west,
+        xshift=0.75cm,
+        width=0.32\textwidth,
+        height=4.75cm,
+        yticklabel style={font=\tiny},
+        xtick=\empty,
+        enlarge x limits=0.25,
+        ymin=0, ymax=45000,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[ybar,pattern=north west lines,pattern color=black!50,bar width=8pt] coordinates {(1,36688)};
+    \addplot[ybar,pattern=dots,pattern color=gray!60,bar width=8pt] coordinates {(2,26028)};
+    \addplot[ybar,pattern=horizontal lines,pattern color=blue!60,bar width=8pt] coordinates {(3,20605)};
+    \addplot[ybar,pattern=crosshatch,pattern color=orange!60,bar width=8pt] coordinates {(4,8467)};
+    \end{axis}
+
+    % Legend
+    \node[draw, rounded corners, rectangle, below=0.5cm of plot7.south, xshift=2.5cm] {
+        \begin{tikzpicture}
+            \node[rectangle, pattern=north west lines, pattern color=black!50, draw, minimum width=0.3cm, minimum height=0.3cm] (box1) at (0,-0.3) {};
+            \node[anchor=west, yshift=0pt, align=left] at (box1.east) {\small Pairing};
+            
+            \node[rectangle, pattern=dots,pattern color=gray!60, draw, minimum width=0.3cm, minimum height=0.3cm] (box2) at (2.5,-0.3) {};
+            \node[anchor=west, yshift=0pt, align=left] at (box2.east) {\small MV19};
+            
+            \node[rectangle, pattern=horizontal lines,pattern color=blue!60, draw, minimum width=0.3cm, minimum height=0.3cm] (box3) at (5.0,-0.3) {};
+            \node[anchor=west, yshift=0pt, align=left] at (box3.east) {\small CKC23};
+            
+            \node[rectangle, pattern=crosshatch,pattern color=orange!60, draw, minimum width=0.3cm, minimum height=0.3cm] (box4) at (7.5,-0.3) {};
+            \node[anchor=west, yshift=0pt, align=left] at (box4.east) {\small AmorE};
+            
+        \end{tikzpicture}
+    };
+\end{tikzpicture}
+}
+% \caption{\small Batch pairing delegation cost comparison for type \pvpv.}
+\label{fig:batch-pvpv-comparison}
+\end{figure}

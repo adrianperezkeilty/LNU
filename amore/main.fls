@@ -653,6 +653,9 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/bookman/pbkli7t.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/bookman/pbkli8r.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/avantgar/pagk7t.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/avantgar/pagk8r.tfm
+INPUT ./figures/performance.tex
+INPUT ./figures/performance.tex
+INPUT figures/performance.tex
 OUTPUT main.nav
 OUTPUT main.toc
 OUTPUT main.snm
@@ -675,6 +678,7 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagd8a.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb

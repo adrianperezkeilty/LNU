@@ -3,7 +3,8 @@
 \beamer@slide {fig:amore-flow}{18}
 \beamer@slide {lemma:sec-against-forgery}{32}
 \beamer@slide {eq:verif-eq}{32}
-\beamer@slide {eq:toy-example-view}{34}
-\beamer@slide {eq:intersection}{34}
-\beamer@slide {fig:meet-in-the-middle}{35}
-\beamer@slide {fig:meet-in-the-middle2}{36}
+\beamer@slide {eq:toy-example-view}{38}
+\beamer@slide {eq:intersection}{38}
+\beamer@slide {fig:meet-in-the-middle}{39}
+\beamer@slide {fig:meet-in-the-middle2}{40}
+\beamer@slide {fig:batch-pvpv-comparison}{53}
