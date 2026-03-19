@@ -21,6 +21,7 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{amsmath,amsfonts,amssymb,mathtools,derivative,systeme,hyperref,relsize,graphicx,ulem}
+\usepackage{stmaryrd}
 \usepackage{xspace}
 \usepackage{pgfplots}
 \usetikzlibrary{patterns,positioning,arrows.meta,shapes.geometric,calc}
@@ -40,8 +41,8 @@
 
 \title[Amortized Pairing Delegation]{Amortized Efficiency for Pairing Delegation}
 
-% \author{Adrian Perez Keilty} % Your name
-\institute[Chalmers] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+\author[Adrián P. Keilty]{Adrián P. Keilty} % Your name
+\institute[Chalmers]{Chalmers University of Technology} % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 
 \begin{document}
 
@@ -52,21 +53,20 @@
 \begin{frame}
     \frametitle{Pairings}
     \small
-Let $(\Group_1,+),\,\,(\Group_2,+)$ and $(\Group_T,\cdot)$ be cyclic groups of prime order $q$.
+Let $(\Group_1,+),\,\,(\Group_2,+)$ and $(\Group_T,\cdot)$ be cyclic groups of order a $2\secpar$-bit prime $q$ where \secpar is the security parameter.
 \pause
 A cryptographic pairing is a map 
 $$
-e\colon\Group_1\times\Group_2\mapsto\Group_T
+e\colon\Group_1\times\Group_2\mapsto\Group_T\,\,\,\text{ that is }
 $$ 
 \pause
-that is 
+\vspace{-1.5em}
 \begin{itemize}
     \item Non degenerate:
     If $\langle P\rangle=\Group_1$ and $\langle Q\rangle=\Group_2$ then $e\langle e(P, Q)\rangle = \Group_T$.
     \pause
     \item Bilinear:
         $e([a]P, [b]Q) = e(P, Q)^{ab} = e([b]P, [a]Q)$.  
-    
     \pause    
     \item Computable in polynomial time. In practice, instantiated over pairing-friendly curves such as BLS12-381.
 \end{itemize}
@@ -119,30 +119,42 @@ K = e(P, P)^{abc} =e([b]&P,[c]P)^a=e([a]P, [c]P)^b=e([a]P, [b]P)^c
 
 \begin{frame}
     \frametitle{Pairing Delegation}
+    All pairing delegation protocols are 
+    \begin{itemize}
+        \item One-shot: 
+        \item Proven unconditionally secure $\rightarrow$ This 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{One-Shot Pairing Delegation}
     \input{figures/delegation-framework.tex}
 \end{frame}
 
 \begin{frame}
+    \frametitle{Sequential Pairing Delegation}
     \input{figures/amore-flow.tex}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Pairing Delegation}
+    \frametitle{Delegation Properties}
 \small
     \begin{itemize}
-    
+    \pause
 	\item \textbf{Correctness}: If the \server behaves honestly, the output of the verification phase is the intended (vector of) pairing(s).	
 \[	 
 \myprob{\myresult=e(\AA,\BB)}{	(\pubvalue, \secvalue)\gets\onsetup(\state, {\AA},{\BB})\\
 		 		\serveroutput\gets\compute(\pubvalue)\\
 		 		\myresult\gets\onverify(\state,\secvalue,\serveroutput)}=1\,.
 \]
+\pause
 	\item \textbf{Verifiability}: The \client must be able to detect with high probability when the \server returns an incorrect result.
 \[	 
 \myprob{\forge{\serveroutput}\gets\adversary\paren{\pubvalue}}{
 		 		\forge{\serveroutput}\neq\serveroutput\\
 		 		\onverify(\state,\secvalue,\serveroutput)\neq\bot}\leq\negl(\secpar)\,.
 \]
+\pause
 	\item \textbf{Amortized Efficiency}: The \client's workload when delegating \totpairings pairings must be lower than computing them locally.
     \[
     \scalebox{0.9}{$\displaystyle
@@ -150,8 +162,144 @@ K = e(P, P)^{abc} =e([b]&P,[c]P)^a=e([a]P, [c]P)^b=e([a]P, [b]P)^c
         \leq \cost(e(A,B))$
     }
     \]
-	% \item \textbf{Input privacy}: For applications handling sensitive data, the \server should learn no information about the \client's pairing inputs beyond what is revealed by the protocol's output.
     \end{itemize}
 \end{frame}
+
+\begin{frame}
+    \frametitle{One way to design this}
+    \small
+    \pause
+    For \textbf{correctness} and \textbf{verifiability}: 
+    \\
+    \vspace{1em}
+    \pause Construct a minimal verification equation in $\Group_T$ that relies on \client generated secrets for it to be satisfied. 
+    \pause
+    \\
+    \vspace{1em}
+    In particular, for public delegated inputs $(A,B)$ and generators $(P,Q,\gamma_T=e(P,Q))\in\Group_1\times\Group_2\times\Group_T$, 
+    \begin{itemize}
+        \setlength{\itemsep}{7.5pt}
+        \pause
+        \item generate secrets $(u,v,r)$, and set $\xi=\gamma_T^{-u\cdot v}=e([u]P,[-v]Q)=e(U,-V)$,
+        \pause
+        \item send $\pubvalue=(C,D)=([v](U+A),V-[\secexp]B)$,
+        \pause
+        \item request for $\serveroutput=(\rho,\gamma)=(e(A,B),e(A,D)\cdot e(C,Q))$,
+        \pause
+        \item and check $\left(\xi\overset{?}{=}\rho^{\secexp}\cdot\gamma\right)\wedge\left(\rho\overset{?}{\in}\Group_T\right)\,$.
+    \end{itemize}
+    \pause
+    This guarantees unconditional security. Why?
+\end{frame}
+
+\begin{frame}
+    \frametitle{One way to design this}
+    \small
+\begin{lemma}[Identifying forgeries]\label{lemma:sec-against-forgery}  
+	Let \adversary be an algebraic adversary, $\paren{\xi,\secexp}\in\Group_T\times\Z_q^*$ the client's secret values, $\serveroutput=(\rho,\gamma)
+	\in\Group_T\times\Group_T$ the output of an honest server, and \verify a verification phase consisting of the checks
+	\begin{equation}
+        \left(\xi\overset{?}{=}\rho^{\secexp}\cdot\gamma\right)\wedge\left(\rho\overset{?}{\in}\Group_T\right)\,.\label{eq:verif-eq}
+    \end{equation}
+    If $\paren{\adversary(\pubvalue)\to\forge{\serveroutput}\neq\serveroutput}\wedge\paren{\onverify(\forge{\serveroutput})\neq\bot}$ then \adversary outputs the secret \secexp.
+\end{lemma}
+\begin{proof}
+    By the closure property of $\Group_T$,
+    if $\paren{\xi=\paren{\forge{\rho}}^{\secexp}\cdot\paren{\forge{\gamma}}}\wedge\paren{\forge{\rho}\in\Group_T}$, then $\forge{\serveroutput}$ can be written as a deviation from the honest output: $\forge{\rho}=\rho\cdot\eta$ and $\forge{\gamma}=\gamma\cdot\eta^{-\secexp}$ for any public element $\eta\in\Group_T\,$. Indeed,  
+    $\paren{\forge{\rho}}^{\secexp}\cdot\paren{\forge{\gamma}}
+    =
+    \paren{\rho\cdot\eta}^\secexp\cdot\gamma\cdot\eta^{-\secexp}=\rho^\secexp\cdot\gamma=\xi\,$.
+\end{proof}
+\end{frame}
+
+\begin{frame}
+    \frametitle{One way to design this}
+    For \textbf{amortized efficiency}:
+    \vspace{1em}
+    \begin{itemize}
+        \setlength{\itemsep}{7.5pt}
+        \item Sequential delegation: Reuse $\xi$ by generating in the next delegations secrets $(\secexp_i,u_i,v_i)$ such that $u_i\cdot v_i=u_j\cdot v_j\,$. The public values will still be equipped with an extra degree of freedom.  
+        \item Sample short scalars. Short $\Group_T$ exponentation is (a lot) cheaper than a full-range one.
+        % \begin{align*}
+        %     e(U_i,-V_i)=e(A_i,B_i)^{\secexp_i}\cdot e(A_i,V_i-[\secexp_i]B_i)\cdot e\left([v_i](U_i+A_i),\gentwo\right)
+        % \end{align*}
+    \end{itemize}
+    \vspace{1em}
+    Wait a minute... do we still get unconditional security?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Meet-in-the-middle attack}
+\small
+\textbf{A toy example:}
+\\
+\vspace{1em}
+Let $(\Group=\langle P\rangle,+)$ be a cyclic group of prime order $q$, 
+% where $q$ is a $2\cdot\secpar$-bit integer, 
+and $(\secexp_1,\secexp_2,u)$ a tuple of secret values such that 
+$\secexp_1,\secexp_2\pick S\subset
+\Z_q^*\,$ and $u\pick\Z_q^*\,$. Let $U=[u]P\in\Group\,$, and consider the public view 
+	\begin{equation}
+		\pubvalue=\begin{cases}
+			\CC=[\secexp_1]U+\XX
+			\\
+			\DD=[\secexp_2]U+\YY
+		\end{cases}\label{eq:toy-example-view}
+		\,,
+	\end{equation}
+	where $\XX,\YY\in\Group$ are public and  $\XX\neq\CC,\YY\neq\DD$.  
+    \adversary can attempt to learn the secret tuple from (\ref{eq:toy-example-view}) by picking an element 
+	\begin{equation}
+		\forge{U}\in\mathcal{I}=\left\{[t_1^{-1}](\CC-\XX)\colon t_1\in S\right\}\cap
+		\left\{[t_2^{-1}](\DD-\YY)\colon t_2\in S\right\}
+		\label{eq:intersection}		
+	\end{equation}
+	and its corresponding indexes $\forge{r}_1,\forge{r}_2\,$, 	
+	which takes up to $2\cdot\size{S}$ computations.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Meet-in-the-middle attack}
+    \input{figures/meet-in-the-middle.tex}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Meet-in-the-middle attack}
+    \input{figures/double-DES.tex}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What now?}
+    \small
+    If short scalars are not used, minimal efficiency is gained. If short scalars are used, no unconditional security can be proven... 
+    \\
+    \vspace{1em}
+    \textbf{Remark}: Once the protocol execution is finished, \adversary can no longer cheat. We could aim for everlasting security instead.
+    \\
+    \vspace{1em}
+    \textbf{(Unorthodox) Solution}: 
+    \begin{itemize}
+        \item Add a timeout parameter to the protocol.
+        \item Bound \adversary computationally... but not in the conventional way: Assume \adversary is not more powerful than the entire Bitcoin network, i.e., \adversary is allowed to compute $2^\kappa$ scalar group multiplications per second ($\kappa$ matching the current hashrate conversion).
+    \end{itemize}  
+\end{frame}
+
+% \begin{frame}
+% 	\begin{align*}
+% 		\rho^\secexp\cdot \gamma & = e(A,B)^\secexp\cdot \left(e(A,D)\cdot e(C,\gentwo)\right) 
+% 		\\[0.3em]
+% 		% \displaybreak[1]
+% 		&=e(A,[\secexp]B)\cdot e(A,V-[\secexp]B)\cdot e\left([-\longtermsecret\cdot u^{-1}](U+A),\gentwo\right)
+% 		\\[0.3em]
+% 		% \displaybreak[1]
+% 		& = e(A,V)\cdot e(U+A,[-\longtermsecret\cdot u^{-1}]\gentwo)
+% 		\\[0.3em]
+% 		% \displaybreak[1]
+% 		& = e(A,V)\cdot e(U+A,-V)
+% 		\\[0.3em]
+% 		% \displaybreak[1]
+% 		& = e(U,-V)=e(\genone,\gentwo)^{u\cdot (-\longtermsecret)\cdot u^{-1}}=\gentt^{-\longtermsecret}=\xi
+% 	\end{align*}
+% \end{frame}
 
 \end{document}

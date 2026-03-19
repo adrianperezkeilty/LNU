@@ -1,0 +1,51 @@
+\begin{figure}[htbp]
+\centering
+\vspace{-1em}
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    scale=1,
+    node distance=1.2cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=3.5cm, minimum height=1cm, align=center, font=\small},
+    arrow/.style={->, thick},
+    label/.style={font=\footnotesize},
+    computation/.style={rectangle, draw, dashed, minimum width=3.8cm, minimum height=2.8cm, align=center},
+    set/.style={ellipse, draw, minimum width=3cm, minimum height=1.4cm, align=center, font=\footnotesize},
+    decoration={brace}
+]
+
+% Group Element Intersection Attack
+
+% Public view
+\node[box, fill=blue!10] (pubview) at (0, 5) {Public View\\$\CC, \DD$};
+\node[font=\bfseries, right=0.5cm of pubview] (title1) {Group Element Intersection Attack};
+\draw[thick] (title1.south west) -- (title1.south east);
+
+% Computation boxes
+\node[computation, fill=red!5] (comp1) at (-2.3, 2.2) {};
+\node[label, anchor=north] at (-2.3, 3.5) {Compute \,\,\,for $t_1\in S$};
+\node[set, fill=red!10] (set1) at (-2.3, 1.8) {$\{[t_1^{-1}](\CC-\XX)\}$};
+\node[label, below=0.3cm of set1, xshift=-1cm, font=\scriptsize] {$|S|$ scalar mult.};
+
+\node[computation, fill=green!5] (comp2) at (2.3, 2.2) {};
+\node[label, anchor=north] at (2.3, 3.5) {Compute \,\,\,for $t_2\in S$};
+\node[set, fill=green!10] (set2) at (2.3, 1.8) {$\{[t_2^{-1}](\DD-\YY)\}$};
+\node[label, below=0.3cm of set2, xshift=1cm, font=\scriptsize] {$|S|$ scalar mult.};
+
+% Intersection
+\node[box, fill=purple!20, minimum height=0.9cm] (intersection1) at (0, -0.3) {Intersection $\mathcal{I}$\\Find $\forge{U}$};
+
+% Arrows
+\draw[arrow] (pubview.south) -- ++(0,-0.3) -| (set1.north);
+\draw[arrow] (pubview.south) -- ++(0,-0.3) -| (set2.north);
+\draw[arrow] (set1.south) -- ++(0,-0.5) -| ([xshift=-1cm]intersection1.north);
+\draw[arrow] (set2.south) -- ++(0,-0.5) -| ([xshift=1cm]intersection1.north);
+
+% Cost label
+\node[label, font=\bfseries, text=red!70, right=0.3cm of intersection1] {Cost: $2\cdot|S|$ scalar multiplications};
+
+\end{tikzpicture}%
+}
+\vspace{0.5em}
+% \caption{\small Analogy between the intersection attack on partially-masking secret variables (above) and Diffie-Hellman's meet-in-the-middle attack (below) on Double DES encryption (adapted from \cite{diffiehellman-mitm}).}
+\label{fig:meet-in-the-middle}
+\end{figure}

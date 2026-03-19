@@ -1,0 +1,50 @@
+\begin{figure}[htbp]
+\centering
+\vspace{-1em}
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    scale=1,
+    node distance=1.2cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=3.5cm, minimum height=1cm, align=center, font=\small},
+    arrow/.style={->, thick},
+    label/.style={font=\footnotesize},
+    computation/.style={rectangle, draw, dashed, minimum width=3.8cm, minimum height=2.8cm, align=center},
+    set/.style={ellipse, draw, minimum width=3cm, minimum height=1.4cm, align=center, font=\footnotesize},
+    decoration={brace}
+]
+% Bottom section: Double DES Meet-in-the-Middle
+
+% Plaintext-ciphertext pair
+\node[box, fill=blue!10] (pair) at (0, -4.8) {Known Pair\\$(m, c)$};
+\node[font=\bfseries, right=0.5cm of pair] (title2) {Double DES Meet-in-the-Middle};
+\draw[thick] (title2.south west) -- (title2.south east);
+
+% Computation boxes
+\node[computation, fill=red!5] (comp3) at (-2.3, -7.6) {};
+\node[label, anchor=north] at (-2.3, -6.3) {Encrypt for \,\,\,\,$t_1\in\{0,1\}^k$};
+\node[set, fill=red!10] (set3) at (-2.3, -8) {$\{\enc(t_1,m)\}$};
+\node[label, below=0.3cm of set3, xshift=-1cm, font=\scriptsize] {$2^k$ encryptions};
+
+\node[computation, fill=green!5] (comp4) at (2.3, -7.6) {};
+\node[label, anchor=north] at (2.3, -6.3) {Decrypt for \,\,\,\,$t_2\in\{0,1\}^k$};
+\node[set, fill=green!10] (set4) at (2.3, -8) {$\{\dec(t_2,c)\}$};
+\node[label, below=0.3cm of set4, xshift=1cm, font=\scriptsize] {$2^k$ decryptions};
+
+% Intersection
+\node[box, fill=purple!20, minimum height=0.9cm] (intersection2) at (0, -10.1) {Intersection\\Find match};
+
+% Arrows
+\draw[arrow] (pair.south) -- ++(0,-0.3) -| (set3.north);
+\draw[arrow] (pair.south) -- ++(0,-0.3) -| (set4.north);
+\draw[arrow] (set3.south) -- ++(0,-0.5) -| ([xshift=-1cm]intersection2.north);
+\draw[arrow] (set4.south) -- ++(0,-0.5) -| ([xshift=1cm]intersection2.north);
+
+% Cost label
+\node[label, font=\bfseries, text=red!70, right=0.3cm of intersection2] {Cost: $2^{k+1}$ operations};
+
+\end{tikzpicture}%
+}
+\vspace{0.5em}
+% \caption{\small Analogy between the intersection attack on partially-masking secret variables (above) and Diffie-Hellman's meet-in-the-middle attack (below) on Double DES encryption (adapted from \cite{diffiehellman-mitm}).}
+\label{fig:meet-in-the-middle2}
+\end{figure}

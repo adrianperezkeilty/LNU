@@ -14,10 +14,10 @@
     \node[clientbox] (onetime) {\textbf{OneTimeSetup}\\$\auxsecpar \to \state$};
     
     % Loop start indicator
-    \node[below=0.8cm of onetime, label, text=red!70!black] (loopstart) {\textit{Sequential delegation loop}};
+    % \node[below=0.8cm of onetime, label, text=red!70!black] (loopstart) {\textit{Sequential delegation loop}};
     
     % Setup phase
-    \node[clientbox, below=0.5cm of loopstart] (setup) {\textbf{Setup}\\$\state, \vec{A}, \vec{B} \to \pubvalue, \secvalue$};
+    \node[clientbox, below=1cm of onetime] (setup) {\textbf{Setup}\\$\state, A, B \to \pubvalue, \secvalue$};
     
     % Compute phase (Server)
     \node[serverbox, right=2cm of setup] (compute) {\textbf{Compute}\\$\pubvalue \to \serveroutput$};
@@ -29,14 +29,13 @@
     \node[decision, below=0.9cm of verify] (result) {$\myresult = \bot$?};
     
     % Success output
-    \node[left=1cm of result, label, text=green!60!black] (success) {Output $\vec{\rho}$\\Continue loop};
+    \node[left=1cm of result, label, text=green!60!black] (success) {Output $\rho=e(A,B)$\\Continue loop};
     
     % Failure output
-    \node[right=5cm of result, label, text=red!70!black] (fail) {Abort\\Restart from\\OneTimeSetup};
+    \node[right=5cm of result, label, text=red!70!black] (fail) {Re-start protocol};
     
     % Arrows
-    \draw[arrow] (onetime) -- (loopstart);
-    \draw[arrow] (loopstart) -- (setup);
+    \draw[arrow] (onetime) -- (setup);
     \draw[arrow] (setup) -- node[above, label, xshift=0.45cm] {$\pubvalue$} (compute);
     \draw[arrow] (compute.south) |- node[near end, above, label] {$\serveroutput$} (verify.east);
     \draw[arrow] (verify) -- (result);
@@ -61,6 +60,6 @@
     \node[label, gray!75] at ($(setup.south)+(3.8,-0.8)$) {\large\textbf{Server}};
 
 \end{tikzpicture}
-\caption{\small Flow diagram for \textbf{sequential} pairing delegation.}
+% \caption{\small Flow diagram for \textbf{sequential} pairing delegation.}
 \label{fig:amore-flow}
 \end{figure}

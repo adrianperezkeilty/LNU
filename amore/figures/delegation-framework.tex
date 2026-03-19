@@ -13,14 +13,14 @@
     \draw[arrow] (client.north) -- ++(0,1.5) -| node[below, pos=0.25, align=center] {$A \in \Group_1$, $B \in \Group_2$\\$+$ auxiliary elements} (server.north);
     \node[stepnum] at (4,2.8) {1};
     
-    \draw[arrow] (server.south) -- ++(0,-1.5) -| node[below, pos=0.25, align=center] {$\rho = e(A,B) \in \Group_T$\\$\pi \subset \Group_T$ (proof)} (client.south);
+    \draw[arrow] (server.south) -- ++(0,-1.5) -| node[below, pos=0.25, align=center] {$\rho = e(A,B) \in \Group_T$\\$\gamma \subset \Group_T$ (proof)} (client.south);
     \node[stepnum] at (4,-1.6) {2};
     
     % Verification box with step number
-    \node[draw, dashed, rounded corners, minimum width=2.5cm, minimum height=0.8cm, right=1.5cm of client, align=center, font=\small] (verify) {Verify $(\rho,\pi)$};
+    \node[draw, dashed, rounded corners, minimum width=2.5cm, minimum height=0.8cm, right=1.5cm of client, align=center, font=\small] (verify) {Verify $(\rho,\gamma)$};
     \draw[->, dashed] (client.east) -- (verify.west);
     \node[stepnum] at (2,0.45) {3};
 \end{tikzpicture}
-\caption{Flow diagram for \textbf{one-shot} pairing delegation.}
+% \caption{Flow diagram for \textbf{one-shot} pairing delegation.}
 \label{fig:delegation-framework}
 \end{figure}

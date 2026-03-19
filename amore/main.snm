@@ -1,3 +1,9 @@
 \beamer@slide {fig:pairing-cost-histogram}{15}
-\beamer@slide {fig:delegation-framework}{16}
-\beamer@slide {fig:amore-flow}{17}
+\beamer@slide {fig:delegation-framework}{17}
+\beamer@slide {fig:amore-flow}{18}
+\beamer@slide {lemma:sec-against-forgery}{32}
+\beamer@slide {eq:verif-eq}{32}
+\beamer@slide {eq:toy-example-view}{34}
+\beamer@slide {eq:intersection}{34}
+\beamer@slide {fig:meet-in-the-middle}{35}
+\beamer@slide {fig:meet-in-the-middle2}{36}
